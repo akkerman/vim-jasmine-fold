@@ -11,12 +11,9 @@ endfunction
 
 function! JasmineFoldText()
     let thisline = getline(v:foldstart)
-    let replacement = ' '
-
-    if match(thisline, '\(describe\|it\)') >=0
-        let thisline = substitute(thisline, '^\(\s*\)\(f\|x\)\?\(describe\|it\)("\(.\+\)".*',  '\2\1\4 ', '')
-        let thisline = substitute(thisline, '^\(\s*\)\(f\|x\)\?\(describe\|it\)(''\(.\+\)''.*', '\2\1\4 ', '')
-    endif
+    "               \1     \2        \3               \4       \5
+    let pattern = '^\(\s*\)\(f\|x\)\?\(describe\|it\)(\("\|''\)\(.\+\)\4.*'
+    let thisline = substitute(thisline, pattern, '\2\1\5', '')
 
     return thisline
 endfunction
