@@ -14,13 +14,8 @@ function! JasmineFoldText()
     let replacement = ' '
 
     if match(thisline, '\(describe\|it\)') >=0
-        let thisline = substitute(thisline, '^\(\s*\)\(.\+\)("\(.\+\)".*', '\2\1\3 ', '')
-        let thisline = substitute(thisline, '^\(\s*\)\(.\+\)(''\(.\+\)''.*', '\2\1\3 ', '')
-        if match(thisline, '^\(f\|x\)') >=0
-            let thisline = substitute(thisline, '^\(f\|x\)\?\S\+', '\1', '')
-        else
-            let thisline = substitute(thisline, '^\(f\|x\)\?\S\+', ' ', '')
-        endif
+        let thisline = substitute(thisline, '^\(\s*\)\(f\|x\)\?\(describe\|it\)("\(.\+\)".*',  '\2\1\4 ', '')
+        let thisline = substitute(thisline, '^\(\s*\)\(f\|x\)\?\(describe\|it\)(''\(.\+\)''.*', '\2\1\4 ', '')
     endif
 
     return thisline
