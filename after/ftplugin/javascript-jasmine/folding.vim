@@ -1,9 +1,9 @@
 function! JasmineFolds()
     let thisline = getline(v:lnum)
     if match(thisline, '^\s*\(f\|x\)\?\(describe\|it\)(') >=0
-        return ">2"
+        return ">1"
     elseif match(thisline, '^\s*\(after\|before\)\(Each\|All\)') >= 0
-        return ">3"
+        return ">2"
     else
         return "="
     endif
