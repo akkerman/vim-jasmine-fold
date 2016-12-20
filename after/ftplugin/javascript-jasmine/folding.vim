@@ -30,3 +30,4 @@ setlocal foldmethod=expr
 setlocal foldexpr=JasmineFolds()
 setlocal foldtext=JasmineFoldText()
 setlocal foldcolumn=4
+setlocal foldminlines=0
