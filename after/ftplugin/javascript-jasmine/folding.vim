@@ -14,6 +14,7 @@ function! JasmineFoldText()
     "               \1     \2        \3               \4       \5
     let pattern = '^\(\s*\)\(f\|x\)\?\(describe\|it\)(\("\|''\)\(.\+\)\4.*'
     let thisline = substitute(thisline, pattern, '\2\1\5', '')
+    let thisline = substitute(thisline, '^\(f\|x\) ', '\1', '')
 
     return thisline
 endfunction
