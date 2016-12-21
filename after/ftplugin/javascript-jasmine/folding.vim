@@ -1,8 +1,8 @@
 function! JasmineFolds()
     let thisline = getline(v:lnum)
-    if match(thisline, '^\s*\(f\|x\)\?\(describe\|it\)(') >=0
+    if match(thisline, '\v^\s*(f|x)?(describe|it)\(') >=0
         return ">1"
-    elseif match(thisline, '^\s*\(after\|before\)\(Each\|All\)') >= 0
+    elseif match(thisline, '\v^\s*(after|before)(Each|All)') >= 0
         return ">2"
     else
         return "="
@@ -11,10 +11,10 @@ endfunction
 
 function! JasmineFoldText()
     let thisline = getline(v:foldstart)
-    "               \1     \2        \3               \4       \5
-    let pattern = '^\(\s*\)\(f\|x\)\?\(describe\|it\)(\("\|''\)\(.\+\)\4.*'
+    "                 (1  )(2  ) (3          )  (4   )(5 )
+    let pattern = '\v^(\s*)(f|x)?(describe|it)\(("|'')(.+)\4.*'
     let thisline = substitute(thisline, pattern, '\2\1\5', '')
-    let thisline = substitute(thisline, '^\(f\|x\) ', '\1', '')
+    let thisline = substitute(thisline, '\v^(f|x) ', '\1', '')
 
     return thisline
 endfunction
