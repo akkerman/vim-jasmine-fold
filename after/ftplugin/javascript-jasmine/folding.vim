@@ -24,3 +24,5 @@ setlocal foldexpr=JasmineFolds()
 setlocal foldtext=JasmineFoldText()
 setlocal foldcolumn=4
 setlocal foldminlines=0
+" the following line has an intentional trailing space
+setlocal fillchars=fold:\ 
